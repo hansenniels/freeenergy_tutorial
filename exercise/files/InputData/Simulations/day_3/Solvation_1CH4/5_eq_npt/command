@@ -1,0 +1,2 @@
+gmx grompp -f ../mdp_files/eq_npt.mdp -c ../4_eq_nvt/nvt_eq.gro -p ../0_topo/topol.top -o npt_eq.tpr -maxwarn 2
+gmx mdrun -deffnm npt_eq

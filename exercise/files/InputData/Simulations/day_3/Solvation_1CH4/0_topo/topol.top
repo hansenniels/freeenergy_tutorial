@@ -1,0 +1,16 @@
+; include the general force field parameters
+#include "gromos54a7.ff/forcefield.itp"
+
+; Include custom topologies
+#include "CH4.itp"
+
+; Include water topology
+#include "gromos54a7.ff/spc.itp"
+
+[ system ]
+; Name
+Decoupling 1 Methane in water
+
+[ molecules ]
+; Compound        #mols
+CH4		           1

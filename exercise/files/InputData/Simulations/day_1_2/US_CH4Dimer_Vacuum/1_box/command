@@ -1,0 +1,1 @@
+gmx editconf -f ../0_coord/start.gro -o box.gro -box 3.2

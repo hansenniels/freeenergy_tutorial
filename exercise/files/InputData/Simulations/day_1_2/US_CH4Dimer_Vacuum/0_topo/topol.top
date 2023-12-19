@@ -1,0 +1,16 @@
+; include the general force field parameters
+#include "gromos54a7.ff/forcefield.itp"
+
+; Include custom topologies
+#include "2CH4.itp"
+
+; Include water topology
+#include "gromos54a7.ff/spc.itp"
+
+[ system ]
+; Name
+2 Methanes in vacuum
+
+[ molecules ]
+; Compound        #mols
+CH4		           1

@@ -1,0 +1,31 @@
+[ moleculetype ]
+; Name   nrexcl
+CH4_1     3
+[ atoms ]
+;  nr  type  resnr  resid  atom  cgnr  charge    mass    typeB chargeB  massB
+    1   CH4    1    CH4    CH4    1    0.000  16.0430     ;  0.000
+; total charge of the molecule:   0.000
+[ bonds ]
+;  ai   aj  funct   c0         c1
+[ pairs ]
+;  ai   aj  funct  ;  all 1-4 pairs but the ones excluded in GROMOS itp
+[ angles ]
+;  ai   aj   ak  funct   angle     fc
+[ dihedrals ]
+; GROMOS improper dihedrals
+;  ai   aj   ak   al  funct   angle     fc
+[ dihedrals ]
+;  ai   aj   ak   al  funct    ph0      cp     mult
+[ exclusions ]
+;  ai   aj  funct  ;  GROMOS 1-4 exclusions
+
+; Include Position restraint file
+#ifdef POSRES_ALL
+#include "posre_xyz.itp"
+#endif
+#ifdef POSRES_US1D
+#include "posre_xyz.itp"
+#endif
+#ifdef POSRES_US3D
+#include "posre_xyz.itp"
+#endif

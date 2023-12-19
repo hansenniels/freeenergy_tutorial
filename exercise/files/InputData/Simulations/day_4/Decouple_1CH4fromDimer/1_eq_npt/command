@@ -1,0 +1,2 @@
+gmx grompp -f eq_npt.mdp -c ../0_coord/start.gro -p ../0_topo/topol.top -o npt_eq.tpr -maxwarn 2
+gmx mdrun -deffnm npt_eq -plumed plumed.dat

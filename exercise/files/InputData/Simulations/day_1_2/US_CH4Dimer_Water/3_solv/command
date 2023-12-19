@@ -1,0 +1,1 @@
+gmx solvate -cp ../2_min_vac/min.gro -cs spc216.gro -p ../0_topo/topol.top -o solv.gro

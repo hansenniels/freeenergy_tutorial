@@ -1,0 +1,1 @@
+python ~/Programs/umbrella_integration/umbrella_integration.py -t 300 -i UI_*out -n 100 -o pmf_UI.dat -pp pmf_UI.eps -pd derivatives.eps -ph histos.eps

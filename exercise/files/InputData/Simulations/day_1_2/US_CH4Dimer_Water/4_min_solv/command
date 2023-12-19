@@ -1,0 +1,2 @@
+gmx grompp -f ../mdp_files/em_solv.mdp -c ../3_solv/solv.gro -r ../3_solv/solv.gro -p ../0_topo/topol.top  -o min.tpr -maxwarn 2
+gmx mdrun -deffnm min

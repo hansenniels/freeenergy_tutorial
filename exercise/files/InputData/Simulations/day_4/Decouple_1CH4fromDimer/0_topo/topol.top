@@ -1,0 +1,32 @@
+; include the general force field parameters
+#include "gromos54a7.ff/forcefield.itp"
+
+;modified atomtypes
+[ atomtypes ]
+;name  at.num   mass      charge  ptype       c6           c12
+;Original:
+;CH4   6       0.000      0.000   A   0.01317904 3.4363044e-05
+CH4    6       0.000      0.000   A   0.26358080 6.8726088e-04
+
+; Include custom topologies
+#include "CH4_1.itp"
+#include "CH4_2.itp"
+
+; Include water topology
+#include "gromos54a7.ff/spc.itp"
+
+[ system ]
+; Name
+2 Methanes in water
+
+[ molecules ]
+; Compound        #mols
+CH4_1             1
+CH4_2             1
+SOL              1050
+
+;distance restraint in bound state (PMF minimum)
+[ intermolecular_interactions]
+[ bonds ]
+; ai     aj    type   bA      kA     bB      kB    
+  1      2      6     0.41   0.0     0.41   3000.0

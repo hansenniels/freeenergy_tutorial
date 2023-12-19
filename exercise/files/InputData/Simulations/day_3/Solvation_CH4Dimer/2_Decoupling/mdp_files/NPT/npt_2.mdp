@@ -1,0 +1,82 @@
+;define                   = -DPOSRES
+integrator               = sd
+tinit                    = 0
+dt                       = 0.002
+comm_grps                = system
+nstcomm                  = 1000  ;2 ps
+nsteps                   = 50000 ;100 ps
+nstxout                  = 0
+nstvout                  = 0
+nstfout                  = 0
+nstlog                   = 2500
+nstenergy                = 0
+;nstxtcout                = 10000
+;xtc_grps                 = Protein
+energygrps               = CH4_1 CH4_2 Water
+nstlist                  = 5
+ns_type                  = grid
+pbc                      = xyz
+;====================================
+;    non-bonded
+;====================================
+rlist                    = 1.4
+coulombtype              = PME
+rcoulomb                 = 1.4
+pme_order                = 4
+optimize_fft             = yes
+vdwtype                  = cut-off
+rvdw                     = 1.4
+DispCorr                 = enerPres
+;ewald_rtol               = 1e-5
+;====================================
+;     T-coupling:
+;====================================
+;tcoupl                   = nose-hoover
+;tcoupl                   = berendsen
+tc-grps                  = non-Water Water
+tau_t                    = 1.0 1.0
+ref_t                    = 300 300
+;====================================
+;     P-coupling:
+;====================================
+;Pcoupl                   = no
+Pcoupl                   = Parrinello-Rahman
+;Pcoupl                   = berendsen
+pcoupltype               = isotropic
+tau_p                    = 0.5
+ref_p                    = 2.0
+compressibility          = 4.5e-5
+;====================================
+;  initial velocities
+;====================================
+gen_vel                  = no
+gen_temp                 = 300
+gen_seed                 = -1
+continuation             = yes
+;====================================
+;     constraints
+;====================================
+constraints              = all-bonds
+lincs_order              = 4
+lincs_iter               = 2
+;====================================
+; Free energy control stuff
+free_energy               = yes
+init_lambda_state         = 2
+delta_lambda              = 0
+calc_lambda_neighbors     = -1            ; Calculate Potential Energy Differences between ALL neighbors
+; Vectors of lambda specified here
+; init_lambda_state         0    1    2    3    4    5    6    7    8 
+bonded_lambdas            = 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00
+vdw_lambdas               = 0.00 0.10 0.30 0.40 0.50 0.68 0.72 0.76 1.00
+coul_lambdas              = 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00
+; Options for the decoupling
+sc-alpha                  = 0.5
+sc-coul                   = no       ; linear interpolation of Coulomb
+sc-power                  = 1
+sc-sigma                  = 0.3
+couple-moltype            = 2CH4     ; name of moleculetype to decouple
+couple-lambda0            = vdw      ; state A: only van der Waals interactions
+couple-lambda1            = none     ; state B: turn off everything
+;couple-intramol          = no
+nstdhdl                   = 100

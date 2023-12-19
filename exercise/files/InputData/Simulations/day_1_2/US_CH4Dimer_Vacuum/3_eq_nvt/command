@@ -1,0 +1,2 @@
+gmx grompp -f ../mdp_files/eq_nvt.mdp -c ../2_min/min.gro -p ../0_topo/topol.top -o nvt_eq.tpr -n ../index.ndx  -maxwarn 2
+gmx mdrun -deffnm nvt_eq -plumed ../plumed.dat
