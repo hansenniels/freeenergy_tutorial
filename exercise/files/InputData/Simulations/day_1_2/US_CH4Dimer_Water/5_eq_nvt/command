@@ -1,2 +1,2 @@
-gmx grompp -f ../mdp_files/eq_nvt.mdp -c ../4_min_solv/min.gro -r ../4_min_solv/min.gro -p ../0_topo/topol.top -o nvt_eq.tpr -maxwarn 2
+gmx grompp -f ../mdp_files/eq_nvt.mdp -c ../4_min_solv/min.gro -r ../4_min_solv/min.gro -p ../0_topo/topol.top -o nvt_eq.tpr -maxwarn 3
 gmx mdrun -deffnm nvt_eq

@@ -14,7 +14,7 @@ refpos = np.arange(0.35,1.2,0.05)
 
 for i in refpos:
   window=str('{:.2f}'.format(i))
-  print window
+  print(window)
   time=np.genfromtxt("../../w_"+window+"/COLVAR_"+window, comments='#', usecols=0)
   comdist_win_i=np.genfromtxt("../../w_"+window+"/COLVAR_"+window, comments='#', usecols=1)
   out_data=np.zeros((np.size(comdist_win_i,axis=0),4))

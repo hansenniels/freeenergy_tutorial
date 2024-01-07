@@ -1,6 +1,6 @@
 #!/bin/bash
-source $HOME/Programs/plumed-2.3.0/sourceme.sh
-source $HOME/Programs/gromacs-5.1.4_plumed-2.3.0_INSTALL/bin/GMXRC
+source $HOME/VL_ETH_24/programs/plumed2/sourceme.sh
+source $HOME/VL_ETH_24/programs/gromacs-2023.2_plumed2_INSTALL/bin/GMXRC
 
 # Set some environment variables
 FREE_ENERGY=$(pwd)
@@ -20,7 +20,7 @@ cd Lambda_$LAMBDA
 
 mkdir EM
 cd EM
-gmx grompp -f $MDP/EM/em_steep_$LAMBDA.mdp -c $FREE_ENERGY/../1_eq_npt/npt_eq.gro -p $FREE_ENERGY/../0_topo/topol.top -o min$LAMBDA.tpr -n $FREE_ENERGY/../index.ndx -maxwarn 1 
+gmx grompp -f $MDP/EM/em_steep_$LAMBDA.mdp -c $FREE_ENERGY/../1_eq_npt/npt_eq.gro -p $FREE_ENERGY/../0_topo/topol.top -o min$LAMBDA.tpr -n $FREE_ENERGY/../index.ndx -maxwarn 2 
 gmx mdrun -deffnm min$LAMBDA -plumed $FREE_ENERGY/plumed.dat
 cd ../
 
@@ -30,7 +30,7 @@ cd ../
 
 mkdir NVT
 cd NVT
-gmx grompp -f $MDP/NVT/nvt_$LAMBDA.mdp -c ../EM/min$LAMBDA.gro -p $FREE_ENERGY/../0_topo/topol.top -o nvt$LAMBDA.tpr -n $FREE_ENERGY/../index.ndx -maxwarn 1
+gmx grompp -f $MDP/NVT/nvt_$LAMBDA.mdp -c ../EM/min$LAMBDA.gro -p $FREE_ENERGY/../0_topo/topol.top -o nvt$LAMBDA.tpr -n $FREE_ENERGY/../index.ndx -maxwarn 2
 gmx mdrun -deffnm nvt$LAMBDA -plumed $FREE_ENERGY/plumed.dat
 cd ../
 
@@ -40,7 +40,7 @@ cd ../
 
 mkdir NPT
 cd NPT
-gmx grompp -f $MDP/NPT/npt_$LAMBDA.mdp -c ../NVT/nvt$LAMBDA.gro -p $FREE_ENERGY/../0_topo/topol.top -t ../NVT/nvt$LAMBDA.cpt -o npt$LAMBDA.tpr -n $FREE_ENERGY/../index.ndx -maxwarn 1
+gmx grompp -f $MDP/NPT/npt_$LAMBDA.mdp -c ../NVT/nvt$LAMBDA.gro -p $FREE_ENERGY/../0_topo/topol.top -t ../NVT/nvt$LAMBDA.cpt -o npt$LAMBDA.tpr -n $FREE_ENERGY/../index.ndx -maxwarn 2
 gmx mdrun -deffnm npt$LAMBDA -plumed $FREE_ENERGY/plumed.dat
 cd ../
 
@@ -50,6 +50,6 @@ cd ../
 
 mkdir Production_MD
 cd Production_MD
-gmx grompp -f $MDP/Production_MD/md_$LAMBDA.mdp -c ../NPT/npt$LAMBDA.gro -p $FREE_ENERGY/../0_topo/topol.top -t ../NPT/npt$LAMBDA.cpt -o md$LAMBDA.tpr -n $FREE_ENERGY/../index.ndx -maxwarn 1
+gmx grompp -f $MDP/Production_MD/md_$LAMBDA.mdp -c ../NPT/npt$LAMBDA.gro -p $FREE_ENERGY/../0_topo/topol.top -t ../NPT/npt$LAMBDA.cpt -o md$LAMBDA.tpr -n $FREE_ENERGY/../index.ndx -maxwarn 2
 gmx mdrun -s md$LAMBDA -plumed $FREE_ENERGY/plumed.dat > mdrun.out 2>&1
 echo "Ending. Job completed for lambda = $LAMBDA"

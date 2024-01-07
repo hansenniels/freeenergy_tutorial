@@ -1,6 +1,6 @@
 #!/bin/bash
-source $HOME/Programs/plumed-2.3.0/sourceme.sh
-source $HOME/Programs/gromacs-5.1.4_plumed-2.3.0_INSTALL/bin/GMXRC
+source $HOME/VL_ETH_24/programs/plumed2/sourceme.sh
+source $HOME/VL_ETH_24/programs/gromacs-2023.2_plumed2_INSTALL/bin/GMXRC
 
 # Set some environment variables
 FREE_ENERGY=$(pwd)
