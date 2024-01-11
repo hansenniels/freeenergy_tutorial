@@ -7,6 +7,6 @@
 
 export OMP_NUM_THREADS=8
 
-for ((i=0; i<9; i++)){
+for ((i=0; i<11; i++)){
   bash job_euler_$i.sh
 }
