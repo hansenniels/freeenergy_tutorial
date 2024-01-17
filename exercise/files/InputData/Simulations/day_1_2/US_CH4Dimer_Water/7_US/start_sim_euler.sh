@@ -1,13 +1,13 @@
 #!/bin/bash
-#BSUB -n 8         # 8 cores
-#BSUB -W 4:00      # 4-hour run time
-#BSUB -J umbrella  
+#SBATCH -n 8           # 8 cores
+#SBATCH --time=4:00:00 # 4-hour run time
+#SBATCH --job-name=umbrella  
 
 # Please adapt the paths to your executables and launch the job via
-# bsub < start_sim_euler.sh
+# sbatch < start_sim_euler.sh
 
-source /cluster/home/hansenni/Programs/plumed-2.7.1/sourceme.sh
-source /cluster/home/hansenni/Programs/gromacs-2021.2_plumed-2.7.1_INSTALL/bin/GMXRC.bash
+source /cluster/home/hansenni/programs/plumed2/sourceme.sh
+source /cluster/home/hansenni/programs/gromacs-2023.2_plumed2_INSTALL/bin/GMXRC.bash
 
 export OMP_NUM_THREADS=8
 
