@@ -1,4 +1,8 @@
 For US simulations: 
 generate index-file via: 
-gmx make_ndx -f 3_solv/solv.gro -o 
-under US_CH4Dimer_Water and add 2 groups ("CH4_1" and "CH4_2") for each Methane molecule
+gmx make_ndx -f 3_solv/solv.gro -o index.ndx 
+under US_CH4Dimer_Water and add 2 groups ("CH4_1" and "CH4_2") by typing:
+a 1
+a 2
+name 6 CH4_1
+name 7 CH4_2
