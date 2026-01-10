@@ -1,0 +1,3 @@
+gmx grompp -f ../mdp_files/pull.mdp -c ../1_box/box.gro -p ../0_topo/topol.top -o pull.tpr -n ../index.ndx -maxwarn 2
+gmx mdrun -deffnm pull
+gmx distance -s pull.tpr -f pull.xtc -n ../index.ndx -select 'com of group 3 plus com of group 4' -oall
